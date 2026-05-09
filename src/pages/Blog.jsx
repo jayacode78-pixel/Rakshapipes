@@ -1568,10 +1568,23 @@ const CSS = `
   min-height: 100vh;
 }
 
+
 /* HERO */
 .rpb-hero {
-  background: linear-gradient(120deg, #c0392b 0%, #96281b 55%, #7b1f15 100%);
-  padding: 60px 0 80px;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1946,24 +1959,7 @@ const CSS = `
 .rpb-pg:disabled { opacity: 0.3; cursor: not-allowed; }
 .rpb-pg svg { width: 16px; height: 16px; fill: currentColor; display: block; }
 
-/* NEWSLETTER */
-.rpb-newsletter {
-  background: linear-gradient(100deg, #fdfdfd 0%, #f7f7fa 100%);
-  padding: 56px 0;
-  text-align: center;
-}
-.rpb-newsletter h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(20px, 3vw, 26px);
-  font-weight: 700;
-  color: #f73535;
-  margin-bottom: 10px;
-}
-.rpb-newsletter p {
-  font-size: 14.5px;
-  color: rgb(5, 5, 5);
-  margin-bottom: 28px;
-}
+
 .rpb-nl-form {
   display: flex;
   justify-content: center;
@@ -2470,7 +2466,7 @@ function BlogList({ onReadMore }) {
         <section className="rpb-hero">
           <div className="rpb-container">
             <p className="rpb-breadcrumb">
-              <a href="/">Home</a><span>›</span><span>Blogs</span>
+             
             </p>
             <h1>Blogs &amp; Articles</h1>
             <p>Expert tips on CPVC, uPVC, SWR, and HDPE pipes — installation guides, agriculture solutions, and industry news from Raksha Pipes, India's trusted pipe manufacturer since 1977.</p>
@@ -2561,31 +2557,7 @@ function BlogList({ onReadMore }) {
         </div>
 
         {/* NEWSLETTER */}
-        <section className="rpb-newsletter" aria-label="Newsletter signup">
-          <div className="rpb-container">
-            <h2>Stay Updated with Raksha Pipes</h2>
-            <p>Subscribe for the latest pipe care tips, product launches, BIS updates, and agriculture solutions — delivered straight to your inbox.</p>
-            {subscribed ? (
-              <div className="rpb-nl-success" role="status"><IconCheck />Thank you! You're now subscribed.</div>
-            ) : (
-              <>
-                <div className="rpb-nl-form">
-                  <input
-                    type="email"
-                    placeholder="Enter your email address"
-                    value={email}
-                    onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
-                    onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
-                    className={emailError ? "rpb-nl-error" : ""}
-                    aria-label="Email address for newsletter"
-                  />
-                  <button type="button" onClick={handleSubscribe}>Subscribe</button>
-                </div>
-                {emailError && <p className="rpb-nl-error-msg" role="alert">{emailError}</p>}
-              </>
-            )}
-          </div>
-        </section>
+       
       </div>
 
       {/* BACK TO TOP */}

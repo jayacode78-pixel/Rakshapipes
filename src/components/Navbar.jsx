@@ -489,33 +489,79 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {mobileOpen && (
           <div style={{
-            background: "#0a5a8a",
+            background: "#bcbeba",
             maxHeight: "80vh",
             overflowY: "auto",
-            borderTop: "1px solid rgba(255,255,255,0.1)",
+            borderTop: "1px solid rgba(15, 15, 15, 0.1)",
           }}>
             {NAV_LINKS.map((link) => (
               <div key={link.label}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: "14px 24px",
-                    color: "#fff",
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    borderBottom: "1px solid rgba(255,255,255,0.08)",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => link.dropdown
-                    ? setMobileExpanded(mobileExpanded === link.label ? null : link.label)
-                    : setMobileOpen(false)
-                  }
-                >
-                  <span>{link.label}</span>
-                  {link.dropdown && <ChevronDown size={13} />}
-                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{link.dropdown ? (
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: "14px 24px",
+      color: "#fff",
+      fontSize: "14px",
+      fontWeight: 500,
+      borderBottom: "1px solid rgba(255,255,255,0.08)",
+      cursor: "pointer",
+    }}
+    onClick={() =>
+      setMobileExpanded(
+        mobileExpanded === link.label ? null : link.label
+      )
+    }
+  >
+    <span>{link.label}</span>
+    <ChevronDown size={13} />
+  </div>
+) : (
+  <Link
+    to={link.href}
+    onClick={() => setMobileOpen(false)}
+    style={{
+      display: "block",
+      padding: "14px 24px",
+      color: "#fff",
+      fontSize: "14px",
+      fontWeight: 500,
+      textDecoration: "none",
+      borderBottom: "1px solid rgba(255,255,255,0.08)",
+    }}
+  >
+    {link.label}
+  </Link>
+)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 {link.dropdown && mobileExpanded === link.label && (
                   <div style={{ background: "rgba(0,0,0,0.2)", padding: "8px 0" }}>
                     {link.dropdown.flatMap(g => g.items || []).map(item => (
